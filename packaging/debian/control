@@ -1,0 +1,21 @@
+Source: flag-audio
+Section: python
+Priority: optional
+Maintainer: FlagOS Contributors <contact@flagos.io>
+Build-Depends: debhelper-compat (= 13),
+               dh-python,
+               python3-all,
+               python3-setuptools,
+               python3-wheel,
+               pybuild-plugin-pyproject
+Standards-Version: 4.6.2
+Homepage: https://github.com/flagos-ai/FlagAudio
+Vcs-Browser: https://github.com/flagos-ai/FlagAudio
+Vcs-Git: https://github.com/flagos-ai/FlagAudio.git
+Rules-Requires-Root: no
+
+Package: python3-flag-audio
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends}, python3-torch, python3-yaml, python3-sqlalchemy, python3-packaging, python3-pybind11
+Description: FlagAudio — audio processing kernels for FlagOS
+ Audio-domain operators (mel spectrogram, STFT/iSTFT, resampling) accelerated via Triton on FlagOS hardware.
