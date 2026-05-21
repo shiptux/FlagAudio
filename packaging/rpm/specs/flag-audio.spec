@@ -7,8 +7,7 @@ Summary:        FlagAudio — audio processing kernels for FlagOS
 
 License:        Apache-2.0
 URL:            https://github.com/flagos-ai/FlagAudio
-Source0:        flag-audio-%{version}.tar.gz
-
+Source0:        %{url}/archive/v%{version}/flag-audio-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools >= 60

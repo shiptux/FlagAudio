@@ -15,6 +15,7 @@ COPY . /workspace/FlagAudio
 RUN SPEC_VERSION=$(grep '^Version:' /workspace/FlagAudio/packaging/rpm/specs/flag-audio.spec | awk '{print $2}') && \
     tar czf /root/rpmbuild/SOURCES/flag-audio-${SPEC_VERSION}.tar.gz \
         -C /workspace/FlagAudio \
+        --exclude='./.git' \
         --transform "s|^\./|flag-audio-${SPEC_VERSION}/|" \
         .
 
