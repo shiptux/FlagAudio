@@ -17,6 +17,7 @@ Rules-Requires-Root: no
 Package: python3-flag-audio
 Architecture: all
 Depends: ${python3:Depends}, ${misc:Depends}, python3-yaml, python3-sqlalchemy, python3-packaging
-Recommends: python3-torch
+# Note: torch is declared in pyproject.toml and resolved automatically via ${python3:Depends};
+# do not list python3-torch here to avoid conflicting/duplicate declarations.
 Description: FlagAudio — audio processing kernels for FlagOS
  Audio-domain operators (mel spectrogram, STFT/iSTFT, resampling) accelerated via Triton on FlagOS hardware.
