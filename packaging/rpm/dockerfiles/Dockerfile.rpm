@@ -14,9 +14,9 @@ COPY . /workspace/FlagAudio
 
 RUN SPEC_VERSION=$(grep '^Version:' /workspace/FlagAudio/packaging/rpm/specs/flag-audio.spec | awk '{print $2}') && \
     tar czf /root/rpmbuild/SOURCES/flag-audio-${SPEC_VERSION}.tar.gz \
-        -C /workspace \
-        --transform "s|^FlagAudio|flag-audio-${SPEC_VERSION}|" \
-        FlagAudio
+        -C /workspace/FlagAudio \
+        --transform "s|^\./|flag-audio-${SPEC_VERSION}/|" \
+        .
 
 RUN rpmbuild -ba /workspace/FlagAudio/packaging/rpm/specs/flag-audio.spec 2>&1 || \
     { echo "=== build failed ==="; \
