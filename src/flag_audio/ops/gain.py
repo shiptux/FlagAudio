@@ -13,7 +13,6 @@
 # limitations under the License.
 
 import torch
-import torchaudio
 import triton
 import triton.language as tl
 
@@ -40,7 +39,7 @@ def gain_kernel(
 
 
 def gain(input_tensor: torch.Tensor, gain_db: float = 1.0) -> torch.Tensor:
-    if gain_db == 1.0:
+    if gain_db == 0.0:
         return input_tensor
 
     output_tensor = torch.empty_like(input_tensor)
@@ -60,6 +59,8 @@ def gain(input_tensor: torch.Tensor, gain_db: float = 1.0) -> torch.Tensor:
 
 
 def test_op():
+    import torchaudio
+
     input_tensor = torch.tensor([0.5, 1.0, 1.5], dtype=torch.float32).to("cuda")
     gain_db = 6.0
     output_tensor = gain(input_tensor, gain_db)

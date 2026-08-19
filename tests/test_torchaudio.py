@@ -26,7 +26,7 @@ from .accuracy_utils import ASUM_SHAPES, SCALARS, gems_assert_close, to_referenc
 @pytest.mark.gain
 @pytest.mark.parametrize("shape", [(3)])
 @pytest.mark.parametrize("dtype", [(torch.float32)])
-@pytest.mark.parametrize("gain_db", [(6.0)])
+@pytest.mark.parametrize("gain_db", [0.0, 1.0, -6.0, 6.0])
 def test_accuracy_gain(shape, gain_db, dtype):
     input_tensor = torch.randn(shape, dtype=dtype, device=flag_audio.device)
     ref_inp1_tensor = to_reference(input_tensor, True)

@@ -13,7 +13,6 @@
 # limitations under the License.
 
 import torch
-import torchaudio
 import triton
 import triton.language as tl
 
@@ -106,6 +105,8 @@ def spectral_centroid(
 
 
 def test_op():
+    import torchaudio
+
     # 1D 波形 (time,)
     waveform_1d = torch.randn(1000).to("cuda")
     sample_rate = 16000

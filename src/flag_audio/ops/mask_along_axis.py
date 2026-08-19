@@ -13,7 +13,6 @@
 # limitations under the License.
 
 import torch
-import torchaudio
 import triton
 import triton.language as tl
 import math
@@ -133,6 +132,8 @@ def mock_rand(size, **kwargs):
 
 
 def test_op():
+    import torchaudio
+
     specgram = torch.rand(2, 2, 4, 4, device="cuda")
     mask_param = 6
     mask_value = 0.0

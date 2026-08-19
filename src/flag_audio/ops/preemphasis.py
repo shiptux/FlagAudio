@@ -13,7 +13,6 @@
 # limitations under the License.
 
 import torch
-import torchaudio
 import triton
 import triton.language as tl
 
@@ -74,6 +73,8 @@ def preemphasis(waveform: torch.Tensor, coeff: float = 0.97) -> torch.Tensor:
 
 
 def test_op():
+    import torchaudio
+
     waveform = torch.tensor([[0.5, 1.0, 1.5], [2.0, 2.5, 3.0]], dtype=torch.float32).to(
         "cuda"
     )

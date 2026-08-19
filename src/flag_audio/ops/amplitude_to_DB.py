@@ -13,7 +13,6 @@
 # limitations under the License.
 
 import torch
-import torchaudio
 import triton
 import triton.language as tl
 
@@ -126,6 +125,8 @@ def amplitude_to_DB(
 
 
 def test_op():
+    import torchaudio
+
     x = torch.empty([5, 2, 2, 2], dtype=torch.float32).to("cuda")
     multiplier = 3.0
     amin = 1e-5

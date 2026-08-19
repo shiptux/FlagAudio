@@ -13,7 +13,6 @@
 # limitations under the License.
 
 import torch
-import torchaudio
 import triton
 import triton.language as tl
 
@@ -101,6 +100,8 @@ def dcshift(
 
 
 def test_op():
+    import torchaudio
+
     input_tensor = torch.tensor([0.5, 1.0, 1.5], dtype=torch.float32).to("cuda")
     shift = 0.5
     limiter_gain = 0.8

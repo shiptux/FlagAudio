@@ -13,7 +13,6 @@
 # limitations under the License.
 
 import torch
-import torchaudio
 import triton
 import triton.language as tl
 
@@ -73,6 +72,8 @@ def mu_law_encoding(x: torch.Tensor, quantization_channels: int) -> torch.Tensor
 
 
 def test_op():
+    import torchaudio
+
     input_tensor = torch.tensor([0.5, 1.0, 1.5], dtype=torch.float32).to("cuda")
     quantization_channels = 256
     output_tensor = mu_law_encoding(input_tensor, quantization_channels)

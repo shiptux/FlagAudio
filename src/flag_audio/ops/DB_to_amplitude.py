@@ -13,7 +13,6 @@
 # limitations under the License.
 
 import torch
-import torchaudio
 import triton
 import triton.language as tl
 
@@ -56,6 +55,8 @@ def DB_to_amplitude(x: torch.Tensor, ref: float, power: float) -> torch.Tensor:
 
 
 def test_op():
+    import torchaudio
+
     x = torch.tensor([0.0, 10.0, 20.0], dtype=torch.float32).to("cuda")
     ref = 3.0
     power = 0.5

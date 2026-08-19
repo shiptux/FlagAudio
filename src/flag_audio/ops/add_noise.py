@@ -13,7 +13,6 @@
 # limitations under the License.
 
 import torch
-import torchaudio
 import triton
 import triton.language as tl
 
@@ -121,6 +120,8 @@ def add_noise(
 
 
 def test_op():
+    import torchaudio
+
     x = torch.rand([5, 2, 2, 8], dtype=torch.float32).to("cuda")
     noise = torch.rand(x.shape, dtype=torch.float32).to("cuda")
     snr = torch.rand(x.shape[:-1], dtype=torch.float32).to("cuda")
